@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>块级作用域</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+
+<script>
+  //ES5语法：ES5只有函数有作用域的概念，if和for都没有作用域的概念，var的使用是有缺陷的
+  // var btns = document.getElementsByTagName('button');
+  // for(var i=0; i<btns.length; i ++) {
+  //   btns[i].addEventListener('click', function () {
+  //     console.log("第" + i + "个按钮被点击了");
+  //   })
+  // }
+  // ES5解决方法：闭包,因为函数是具有作用域的
+  // var btns = document.getElementsByTagName('button');
+  // for(var i=0; i<btns.length; i ++) {
+  //   (function (i) {
+  //     btns[i].addEventListener('click', function () {
+  //       console.log("第" + i + "个按钮被点击了");
+  //     })
+  //   })(i)
+  // }
+
+  //ES6语法，let具有块级作用域
+  var btns = document.getElementsByTagName('button');
+  for(let i=0; i<btns.length; i ++) {
+    btns[i].addEventListener('click', function () {
+      console.log("第" + i + "个按钮被点击了");
+    })
+  }
+</script>
+</body>
+</html>

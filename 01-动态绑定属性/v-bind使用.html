@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-bind使用</title>
+</head>
+<body>
+<div id="app">
+  <img v-bind:src="imgUrl">
+<!--  <h1>{{ imgUrl }}</h1>-->
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      imgUrl: 'https://img.alicdn.com/tfs/TB1f1FopKL2gK0jSZPhXXahvXXa-1125-350.jpg_1152x1920Q75s50.jpg_.webp'
+    }
+  })
+</script>
+</body>
+</html>

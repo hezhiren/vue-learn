@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>课后练习</title>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="(m, index) in movies" @click="changeColor(index)"
+        :class="[count === index ? 'active': '']">{{ index + " " + m }}</li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      movies: ['怦然心动', '朝花夕拾', '泰坦尼克号', '冰雪奇缘2'],
+      count: ''
+    },
+    methods: {
+      changeColor: function(index) {
+        this.count = index
+      }
+    }
+  })
+</script>
+</body>
+</html>
