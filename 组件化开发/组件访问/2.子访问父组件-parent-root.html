@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+    <div id ="app"> 
+       <cpn></cpn>
+    </div>
+
+    <template id='cpn'>
+      <div>
+          我是子组件
+          <cmp></cmp>
+      </div>
+      
+    </template>
+
+    <template id='cmp'>
+      <div>
+        <button @click='btnClick'>我是子子组件</button>
+      </div>
+    </template>
+
+    <script>
+     //创建Vue实例,得到 ViewModel
+     var vm = new Vue({
+        el: '#app',
+        data: {
+            message: '我是根组件'
+        },
+        methods: {},
+        components: {
+          cpn: {
+            template: '#cpn',
+            data(){
+              return {
+                message: '我是子组件'
+              }
+            },
+            components: {
+              cmp: {
+                template: "#cmp",
+              methods: {
+                btnClick() {
+                  console.log(this.$parent.message)// 访问父组件
+                  console.log(this.$root.message) //访问根组件
+                }
+              }
+            }
+          }
+          }
+        }
+     });
+    </script>
+</body>
+
+</html>
