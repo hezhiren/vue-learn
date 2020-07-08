@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id ="app">
+      <cmp :number1="num1" :number2="num2" @change1="ipt1Change" @change2="ipt2Change"></cmp>
+    </div>
+
+    <template id='cmp'>
+      <div>
+        <p>{{number1}}</p>
+        <p>{{dnumber1}}</p>
+        <input type="text" v-model='dnumber1'></input>
+        <p>{{number2}}</p>
+        <p>{{dnumber2}}</p>
+        <input type="text" v-model='dnumber2'></input>
+      </div>
+    </template>
+
+
+    <script>
+      const cmp = {
+        template: '#cmp',
+        props: {
+          number1: Number,
+          number2: Number
+        },
+        data() {
+          return {
+            dnumber1: this.number1,
+            dnumber2: this.number2
+          }
+        },
+        watch: {
+          // 监听值变化
+          dnumber1(newValue) {
+             this.dnumber2 = newValue * 100
+             this.$emit('change2', this.dnumber2)
+          },
+          dnumber2(newValue){
+            this.dnumber1 = newValue / 100
+             this.$emit('change1', this.dnumber1)
+          }
+        }
+      }
+ 
+     //创建Vue实例,得到 ViewModel
+     var vm = new Vue({
+        el: '#app',
+        data: {
+          num1: 0,
+          num2: 1
+        },
+        methods: {
+          ipt1Change(value){
+            this.num1 = parseFloat(value)
+          },
+          ipt2Change(value){
+            this.num2 = parseFloat(value)
+          }
+        },
+        components: {
+          cmp
+        }
+     });
+    </script>
+</body>
+
+</html>
