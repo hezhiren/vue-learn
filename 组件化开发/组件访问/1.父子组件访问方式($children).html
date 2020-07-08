@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+    <div id ="app"> 
+      <cpn></cpn>
+      <cpn></cpn>
+      <cpn></cpn>
+      <button @click='btnClick'>按钮</button>
+    </div> 
+
+    <template id='cpn'>
+      <div>我是子组件</div>
+    </template>
+    <script>
+     //创建Vue实例,得到 ViewModel
+     var vm = new Vue({
+        el: '#app',
+        data: {
+          message: '你好啊'
+        },
+        methods: {
+          btnClick(){
+            console.log(this.$children)
+            this.$children[0].showMessage()
+          }
+        },
+        components: {
+          cpn: {
+            template: '#cpn',
+            methods: {
+              showMessage() {
+                console.log("show message")
+              }
+            }
+          }
+        }
+     });
+    </script>
+</body>
+
+</html>
