@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父子组件数据双向绑定</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id ="app">
+      <cmp :number1='num1' :number2='num2' @inputemit1='iptEvent1' @inputemit2='iptEvent2'></cmp>
+    </div>
+
+    <template id="cmp">
+      <div>
+        <!--Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "number1"-->
+        <!--父级prop的更新会向下流动到子组件中，但是反过来不行，子组件不能修改由父组件传递过来的值，这个情况下，可以使用data或计算属性
+        <input v-model='number1'/>-->
+        <h2>prop:{{ number1 }}</h2>
+        <h2>data:{{ dnumber1 }}</h2>
+        <input type='text' :value='dnumber1' @input='inputChange1'></input>
+
+        <h2>prop:{{ number2}}</h2>
+        <h2>data:{{ dnumber2}}</h2>
+        <input type="text" :value='dnumber2' @input='inputChange2'></input>
+      </div>
+    </template>
+
+    <script>
+      const cmp = {
+        template: '#cmp',
+        props: {
+          number1: Number,
+          number2: Number
+        },
+        data() {
+          return {
+            dnumber1: this.number1,
+            dnumber2: this.number2
+          }
+        },
+        methods: {
+          // 子组件中的自定义事件，将数据变动传递给父组件
+          inputChange1: function(event){
+            //获取输入框的值
+            this.dnumber1 = event.target.value
+            this.$emit('inputemit1', this.dnumber1)
+            
+            // dnumber2的值设置为dnumber1的100倍
+            this.dnumber2 = this.dnumber1 * 100
+            this.$emit('inputemit2', this.dnumber2)
+          },
+          inputChange2: function(event){
+            //获取输入框的值
+            this.dnumber2 = event.target.value
+            this.$emit('inputemit2', this.dnumber2)
+
+             // dnumber1的值设置为dnumber2的百分之一
+            this.dnumber1 = this.dnumber2 / 100
+            this.$emit('inputemit1', this.dnumber1)
+          }
+        }
+      }
+      //创建Vue实例,得到 ViewModel
+      var vm = new Vue({
+      el: '#app',
+      data: {
+         num1: 0,
+         num2: 1
+      },
+      methods: {
+        iptEvent1: function(value) { 
+          //此处传递的value为String，要转换为int
+          this.num1 = parseFloat(value)
+        },
+        iptEvent2: function(value) {
+          this.num2 = parseFloat(value)
+        }
+      },
+      components: {
+        cmp
+      }
+    });
+    </script>
+</body>
+
+</html>
