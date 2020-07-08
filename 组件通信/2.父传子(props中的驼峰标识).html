@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父传子驼峰标识</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id ="app"> 
+      <!--:v-bind后不支持驼峰命名--> 
+      <!--<cpn :cInfo='info'></cpn>-->
+      <!--此写法可正常使用-->
+      <cpn :c-info='info' :child-my-message='message'></cpn>
+    </div>
+
+    <template id="cpn">
+        <!--组件中如果有多个节点，必须有一个根节点
+        <h2>{{cInfo}}</h2>
+        <h2>{{childMyMessage}}</h2>
+      -->
+      <div>
+        <h2>{{cInfo}}</h2>
+        <h2>{{childMyMessage}}</h2>
+      </div>
+    </template>
+
+    <script>
+     const cpn = {
+         template: '#cpn',
+         props: {
+            //  cinfo: {
+            //      type: Object,
+            //      default() {
+            //        return {}
+            //      }
+            //  }
+             // 驼峰命名
+             cInfo: {
+                 type: Object,
+                 default() {
+                   return {}
+                 }
+             },
+             childMyMessage: {
+               type: String,
+               default: 'default message'
+             }
+
+         }
+     }
+
+     //创建Vue实例,得到 ViewModel
+     var vm = new Vue({
+        el: '#app',
+        data: {
+           info: {
+             name: 'zhangshan',
+             age: 21,
+             height: 1.88
+           },
+           message: "child message"
+        },
+        methods: {},
+        components: {
+          cpn
+        }
+     });
+    </script>
+</body>
+
+</html>

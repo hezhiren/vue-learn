@@ -6,39 +6,24 @@
 </head>
 <body>
 <div id="app">
-  <h2> {{ getFullName() }}</h2>
-  <h2> {{ getFullName() }}</h2>
-  <h2> {{ getFullName() }}</h2>
-  <h2> {{ getFullName() }}</h2>
+  <span v-if="isUser">
+    <label for="username">用户名:</label>
+    <input id='username' type="text" placeholder="请输入用户名">
+  </span>
+  <span v-else>
+     <label for="email">邮箱:</label>
+     <input id="email" type="text" placeholder="请输入邮箱">
+  </span>
 
-  <h2>{{ fullName }}</h2>
-  <h2>{{ fullName }}</h2>
-  <h2>{{ fullName }}</h2>
-  <h2>{{ fullName }}</h2>
-
+  <input type="button" @click="isUser = !isUser" value="切换">
 </div>
 <script src="../js/vue.js"></script>
 <script>
   const app = new Vue({
     el: '#app',
     data: {
-      firstName: "何",
-      lastName: '志仁'
+      isUser: true,
     },
-    methods: {
-      getFullName: function () {
-          console.log("getFullName");
-          return this.firstName + this.lastName
-      }
-    },
-    computed: {
-      //计算属性是有缓存的.多次访问计算属性会返回之前的计算结果，不必再次执行函数
-      //而调用方法将在每次重新渲染时，再次执行函数
-      fullName: function () {
-        console.log("fullName");
-        return this.firstName + this.lastName
-      }
-    }
   })
 </script>
 </body>

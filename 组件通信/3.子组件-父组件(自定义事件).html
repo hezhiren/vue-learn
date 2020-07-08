@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id ="app"> 
+      <!--驼峰命名会有问题，v-on后面的时间会在DOM里解析为全小写-->
+      <cpn @btnclick='getCatagory'></cpn>
+    </div>
+    
+    <template id='cpn'>
+      <div>
+        <button v-for='item in catagories' @click='btnClick(item)'>{{ item.name }}</button>
+      </div>
+    </template>
+
+    <script>
+      const cpn = {
+        template: '#cpn',
+        data() {
+            return {
+              catagories: [
+              {id:'aaa', name:'手机数码'},
+              {id:'bbb', name:'食品生鲜'},
+              {id:'ccc', name:'图书文娱'}
+            ]
+          }
+        },
+        methods: {
+          btnClick: function(item){
+            this.$emit('btnclick', item)
+          }
+        }
+      }
+
+      //创建Vue实例,得到 ViewModel
+      var vm = new Vue({
+          el: '#app',
+          data: {
+            
+          },
+          methods: {
+            getCatagory: function(item) {
+              console.log("父组件获取元素：" + item)
+            }
+          },
+          components: {
+            cpn
+          }
+      });
+    </script>
+</body>
+
+</html>

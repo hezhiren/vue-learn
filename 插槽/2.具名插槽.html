@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>具名插槽</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id ="app"> 
+      <child-component>
+        <template v-slot:girl>
+            漂亮、美丽、购物、逛街
+        </template>
+        <template v-slot:boy>
+            小老弟怎么回事
+        </template>
+        <div>
+            我是一类人，
+            我是默认的插槽
+        </div>
+      </child-component>
+    </div>
+
+    <script>
+      //创建组件
+      Vue.component('child-component', {
+        template: `
+            <div>
+              <h4>这个世界不仅有男人和女人</h4>
+              <slot name="girl"></slot>
+              <div style="height:1px;background-color:blue;"></div>
+              <slot name="boy"></slot>
+              <div style="height:1px;background-color:red;"></div>
+              <slot></slot>
+            </div>
+        `
+      })
+
+      //创建Vue实例,得到 ViewModel
+      var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {}
+     });
+    </script>
+</body>
+
+</html>
