@@ -15,9 +15,10 @@
         </cmp>
 
         <child :lists='nameList'>
-          <template #first="a">
-            <div v-if='a.first.id==1'>你好：<span>{{a.first.name}}</span></div>
-            <div v-else>{{a.first.name}}</div>
+          <!---slot为插槽对象-->
+          <template #first="slot">
+            <div v-if='slot.first.id==1'>你好：<span>{{slot.first.name}}</span></div>
+            <div v-else>{{slot.first.name}}</div>
           </template>
         </child>
     </div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id ="app"> 
+      <!--此处isShow是所处模板的值，跟<cmp>无关-->
+      <cmp v-show='isShow'></cmp>
+    </div>
+ 
+    <template id='cmp'>
+      <div>
+        <h1>我是子组件</h1>
+        <p v-show='isShow'>我是内容。。。。</p>
+      </div>
+    </template>
+
+    <script>
+     //创建Vue实例,得到 ViewModel
+     var vm = new Vue({
+        el: '#app',
+        data: {
+          message: "fuck world",
+          isShow: true
+        },
+        methods: {},
+        components:{
+          cmp: {
+            template: "#cmp",
+            data() {
+              return {
+                message: "hello world",
+                isShow: false
+              }
+            }
+          }
+        }
+     });
+    </script>
+</body>
+
+</html>

@@ -10,18 +10,23 @@
 
 <body>
     <div id ="app"> 
-      <cmp>你好</cmp>
-      <cmp></cmp>
+      <cmp>
+        <span slot="left">返回</span>
+        <span slot="center">标题</span>
+        <button slot="right">按钮</button>
+      </cmp>
     </div>
-    
+
+    <!--模拟导航-->
+    <template id='cmp'>
+       <div>
+         <slot name="left">左边</slot>
+         <slot name="center">中间</slot>
+         <slot name="right">右边</slot>
+       </div>
+    </template>
+
     <script>
-    // 创建组件
-    Vue.component("cmp", {
-      template: `
-      <div>Hello,World!<slot><button>插槽默认值</button></slot></div>
-      `
-    }) 
- 
      //创建Vue实例,得到 ViewModel
      var vm = new Vue({
         el: '#app',
@@ -30,6 +35,11 @@
         },
         methods: {
 
+        },
+        components: {
+          cmp:{
+            template: '#cmp'
+          }
         }
      });
     </script>
