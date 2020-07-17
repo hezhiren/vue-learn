@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布局</title>
+    <style>
+      .index{
+        width: 100%;
+        height: 100%;
+        padding: 24px;
+      }
+
+      /* 弹性盒子布局 */
+      .flex-container{
+        width: 100%;
+        height: 100%;
+        /* 设置display值为flex或者inline-flex将其定义为弹性容器 */
+        display: flex;
+        display: -webkit-flex; 
+        background-color: white;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    
+      .flex-todo{
+        width: 100%;
+        height: 100%;
+        background-color: whitesmoke;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        
+      }
+    
+      /* 添加背影 */
+      .flex-todo:hover {
+        box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.25);
+      }
+
+      .shape {
+        border-radius: 29px;
+        width: 58px;
+        height: 58px;
+      }
+      .shape img{
+        width: 30px;
+        height: 30px;
+        margin: 14px 14px;
+      }
+
+      .flex-list{
+        width: 20%;
+        height: 200px;
+        background-color: red;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      .flex-common{
+        width: 800px;
+        height: 200px;
+        background-color: blue;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      .grid-index{
+        width: 50%;
+        height: 50%;
+        padding: 24px;
+        background-color: dimgray;
+        border-radius: 5px;
+      }
+
+      .grid-container {
+        width: 95%;
+        height: 95%;
+        display: grid;
+      }
+
+     
+    </style>
+</head>
+<body>
+  <!--弹性盒子布局-->
+  <div class='index'>
+    <div class='flex-container'>
+      <div class='flex-todo'>
+        <div class="shape" style="background-color:rgba(255,193,7,0.10)">
+          <img src="image/all-todo.svg">
+        </div>
+        <div class="text">
+          <span class="des">全部待办</span>
+          <span class="number">1</span>
+        </div>
+      </div>
+      <div class='flex-list'>列表</div>
+      <div class='flex-common'>常用</div>
+    </div>
+  </div>
+
+ <div class='grid-index'>
+   <div class="grid-container">
+     <div class="cell one">1</div>
+     <div class='cell two'>2</div>
+     <div class='cell three'>3</div>
+     <div class='cell four'>4</div>
+     <div class='cell five'>5</div>
+     <div class='cell six'>6</div>
+     <div class='cell seven'>7</div>
+     <div class="cell eight">8</div>
+     <div class='cell nine'>9</div>
+   </div>
+
+ </div>
+  
+</body>
+</html>
