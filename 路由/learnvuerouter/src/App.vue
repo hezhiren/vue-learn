@@ -1,0 +1,44 @@
+<template>
+  <div id="app">
+    <!--tag属性：tag可以指定<router-link>之后渲染成什么组件-->
+    <!--<router-link to='/home' tag='button' replace active-class="active">首页</router-link>-->
+    <router-link to='/home' tag='button'>首页</router-link>
+    <!-- 禁止浏览器按钮返回 -->
+    <router-link to='/about' replace>关于</router-link>
+    <router-link :to = "'/user/' + userId" replace>用户</router-link>
+    <!-- 让路由显示出来-->
+    <router-view></router-view>
+
+    <!-- 通过代码实现 -->
+    <!-- <button @click='homeClick'>首页</button>
+     <button @click="aboutClick">关于</button> -->
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      userId: 6
+    }
+  }
+
+  // methods: {
+  //    homeClick() {
+  //     //  this.$router.push('/home')
+  //      this.$router.replace('/home')
+  //    },
+  //    aboutClick() {
+  //     //  this.$router.push('/about')
+  //      this.$router.replace('/about')
+  //    }
+  // }
+}
+</script>
+
+<style>
+  .active{
+    color: red;
+  }
+</style>
