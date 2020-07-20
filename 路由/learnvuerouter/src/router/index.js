@@ -26,6 +26,9 @@ const routes = [
   {
     path: '/home',
     component: Home,
+    meta: {
+      title: '首页'
+    },
     //2020.7.20 1449 路由嵌套
     children: [
       {
@@ -44,11 +47,17 @@ const routes = [
   },
   {
     path: '/about',
-    component: About
+    component: About,
+    meta: {
+      title: '关于'
+    }
   },
   {
     path: '/user/:id',
-    component: User
+    component: User,
+    meta: {
+      title: '用户'
+    }
   },
   {
     path: '/profile',
@@ -56,10 +65,25 @@ const routes = [
   }
 ]
 
-// 2. 创建VueRouter对象,并导出
-export default new Router({
+const router = new Router({
   // 将默认的hash模式改为history模式
   routes,
   mode: 'history',
   linkActiveClass: 'active',
 })
+
+// 前置导航守卫（guard）
+router.beforeEach((to, from, next)=>{
+  // 从from跳转到to
+  // matched[0]，处理嵌套路由undefined的情况
+  document.title = to.matched[0].meta.title
+  next() // 必须调用
+})
+
+// 后置导航守卫
+router.afterEach((to, from) => {
+
+})
+
+// 2. 创建VueRouter对象,并导出
+export default router

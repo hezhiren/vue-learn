@@ -4,7 +4,13 @@
 
 <script>
 export default {
-  name: 'About'
+  name: 'About',
+   created() {
+    console.log("About created")
+  },
+  destroyed() {
+    console.log("About destroyed")
+  }
 }
 </script>
 

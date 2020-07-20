@@ -9,14 +9,17 @@
     <!-- 第一种传参方式 -->
     <router-link :to = "'/user/' + userId" replace>用户</router-link>
     <!-- 第二种传参方式 -->
-    <!-- <router-link :to="{path:'/profile', query: {name:'张三', age:20, height: 1.80}}">档案</router-link> -->
+    <router-link :to="{path:'/profile', query: {name:'张三', age:20, height: 1.80}}">档案</router-link>
 
     <!--代码实现第二种参数方式-->
-    <button @click="profileClick" >档案</button>
+    <!-- <button @click="profileClick" >档案</button> -->
 
     <!-- 让路由显示出来-->
-    <router-view></router-view>
-
+    <!-- keep-alive 任何匹配的组件会被缓存，可以设置include和exclude， 中间不能有空格 -->
+    <keep-alive exclude='Profile,User'>
+      <router-view/>
+    </keep-alive>
+   
     <!-- 通过代码实现 -->
     <!-- <button @click='homeClick'>首页</button>
      <button @click="aboutClick">关于</button> -->
@@ -30,7 +33,7 @@ export default {
     return {
       userId: 6
     }
-  },
+  }
 
   // 通过代码实现路由
   // methods: {
@@ -45,18 +48,18 @@ export default {
   // }
 
   // 通过代码实现第二种传参方式
-  methods: {
-    profileClick() {
-      this.$router.push({
-        path: '/profile',
-        query: {
-          name: '张三',
-          age: 18,
-          height: 1.78
-        }
-      })
-    }
-  }
+//   methods: {
+//     profileClick() {
+//       this.$router.push({
+//         path: '/profile',
+//         query: {
+//           name: '张三',
+//           age: 18,
+//           height: 1.78
+//         }
+//       })
+//     }
+//   }
 }
 </script>
 

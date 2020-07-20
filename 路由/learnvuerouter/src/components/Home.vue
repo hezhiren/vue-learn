@@ -12,7 +12,13 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  created() {
+    console.log("Home created")
+  },
+  destroyed() {
+    console.log("Home destroyed")
+  }
 }
 </script>
 
