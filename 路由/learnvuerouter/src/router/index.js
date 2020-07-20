@@ -1,17 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/Home'
-import About from '../components/About'
-import User from '../components/User'
+// import Home from '../components/Home'
+// import About from '../components/About'
+// import User from '../components/User'
+
 
 // 1. 通过Vue.use(插件)，安装插件
 Vue.use(Router)
+
+// 2020.7.20 路由懒加载
+const Home = () => import('../components/Home')
+const About = () => import('../components/About')
+const User = () => import('../components/User')
 
 const routes = [
   // 路由的默认路径
   {
     path: '',
-    redirect: 'Home'
+    redirect: '/home'
   },
   {
     path: '/home',

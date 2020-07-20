@@ -25,6 +25,7 @@ export default {
     }
   }
 
+  // 通过代码实现路由
   // methods: {
   //    homeClick() {
   //     //  this.$router.push('/home')
