@@ -9,7 +9,10 @@
     <!-- 第一种传参方式 -->
     <router-link :to = "'/user/' + userId" replace>用户</router-link>
     <!-- 第二种传参方式 -->
-    <router-link :to="{path:'/profile', query: {name:'张三', age:20, height: 1.80}}">档案</router-link>
+    <!-- <router-link :to="{path:'/profile', query: {name:'张三', age:20, height: 1.80}}">档案</router-link> -->
+
+    <!--代码实现第二种参数方式-->
+    <button @click="profileClick" >档案</button>
 
     <!-- 让路由显示出来-->
     <router-view></router-view>
@@ -27,7 +30,7 @@ export default {
     return {
       userId: 6
     }
-  }
+  },
 
   // 通过代码实现路由
   // methods: {
@@ -40,6 +43,20 @@ export default {
   //      this.$router.replace('/about')
   //    }
   // }
+
+  // 通过代码实现第二种传参方式
+  methods: {
+    profileClick() {
+      this.$router.push({
+        path: '/profile',
+        query: {
+          name: '张三',
+          age: 18,
+          height: 1.78
+        }
+      })
+    }
+  }
 }
 </script>
 
