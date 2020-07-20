@@ -12,16 +12,33 @@ Vue.use(Router)
 const Home = () => import('../components/Home')
 const About = () => import('../components/About')
 const User = () => import('../components/User')
+const News = () => import('../components/HomeNews')
+const Message = () => import('../components/HomeMessage')
 
 const routes = [
   // 路由的默认路径
   {
     path: '',
-    redirect: '/home'
+    redirect: 'home'
   },
   {
     path: '/home',
     component: Home,
+    //2020.7.20 1449 路由嵌套
+    children: [
+      {
+        path: '',
+        redirect: 'news'
+      },
+      {
+        path: '/home/news',
+        component: News
+      },
+      {
+        path: '/home/message',
+        component: Message
+      }
+    ]
   },
   {
     path: '/about',
