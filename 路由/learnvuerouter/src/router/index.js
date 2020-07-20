@@ -14,6 +14,8 @@ const About = () => import('../components/About')
 const User = () => import('../components/User')
 const News = () => import('../components/HomeNews')
 const Message = () => import('../components/HomeMessage')
+// 第二种传参方式
+const Profile = () => import('../components/Profile')
 
 const routes = [
   // 路由的默认路径
@@ -47,6 +49,10 @@ const routes = [
   {
     path: '/user/:id',
     component: User
+  },
+  {
+    path: '/profile',
+    component: Profile
   }
 ]
 

@@ -6,7 +6,11 @@
     <router-link to='/home' tag='button'>首页</router-link>
     <!-- replace禁止浏览器按钮返回 -->
     <router-link to='/about' replace>关于</router-link>
+    <!-- 第一种传参方式 -->
     <router-link :to = "'/user/' + userId" replace>用户</router-link>
+    <!-- 第二种传参方式 -->
+    <router-link :to="{path:'/profile', query: {name:'张三', age:20, height: 1.80}}">档案</router-link>
+
     <!-- 让路由显示出来-->
     <router-view></router-view>
 
