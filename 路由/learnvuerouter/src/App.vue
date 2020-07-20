@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <!--tag属性：tag可以指定<router-link>之后渲染成什么组件-->
+    <!--active-class="active" 菜单高亮 active为自定义样式-->
     <!--<router-link to='/home' tag='button' replace active-class="active">首页</router-link>-->
     <router-link to='/home' tag='button'>首页</router-link>
-    <!-- 禁止浏览器按钮返回 -->
+    <!-- replace禁止浏览器按钮返回 -->
     <router-link to='/about' replace>关于</router-link>
     <router-link :to = "'/user/' + userId" replace>用户</router-link>
     <!-- 让路由显示出来-->
