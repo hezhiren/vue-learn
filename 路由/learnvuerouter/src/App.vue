@@ -14,12 +14,12 @@
     <!--代码实现第二种参数方式-->
     <!-- <button @click="profileClick" >档案</button> -->
 
-    <!-- 让路由显示出来-->
-    <!-- keep-alive 任何匹配的组件会被缓存，可以设置include和exclude， 中间不能有空格 -->
-    <keep-alive exclude='Profile,User'>
+    <!-- router-view 让路由显示出来-->
+    <!-- keep-alive 任何匹配的组件会被缓存，可以设置include和exclude-->
+    <keep-alive exclude='Profile, User'>
       <router-view/>
     </keep-alive>
-   
+
     <!-- 通过代码实现 -->
     <!-- <button @click='homeClick'>首页</button>
      <button @click="aboutClick">关于</button> -->

@@ -31,10 +31,11 @@ const routes = [
     },
     //2020.7.20 1449 路由嵌套
     children: [
-      {
-        path: '',
-        redirect: 'news'
-      },
+       // 在Home组件使用activated跳转默认路径，实现Home子组件状态保存
+      // {
+      //   path: '',
+      //   redirect: 'news'
+      // },
       {
         path: '/home/news',
         component: News
