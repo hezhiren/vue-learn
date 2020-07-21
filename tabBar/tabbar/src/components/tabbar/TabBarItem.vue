@@ -37,6 +37,7 @@ export default {
     }
   },
   computed: {
+    // 路径匹配，匹配到了当前路径，则激活菜单
     isActive() {
       return this.$route.path.indexOf(this.path) !== -1
     },
