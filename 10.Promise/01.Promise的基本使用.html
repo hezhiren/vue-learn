@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      // 链式编程
+      // Promise的三种状态
+      
+
+      // Promise本身就是函数
+      new Promise((reslove, reject) => {
+        setTimeout(() => {
+          // 成功的时候调用resolve
+          // 一旦调用resolve，就会接着回调then中的函数，并把参数传过去
+          // reslove("hello")
+
+          // 失败的时候调用reject
+          // 失败的时候会回调catch
+          reject("error")
+        }, 1000) 
+      }).then(
+        // 拿到上步骤处理结果进行处理
+        (res) => console.log(res)
+      ).catch((err)=>{
+        console.log(err)
+      })
+
+      // 什么时候需要Promise
+
+      // 1. 一般情况下，有异步操作时，使用Promise对异步操作进行封装
+      // new -> 构造函数（1.保存状态信息  2.执行传入的函数）
+      // 在执行传入的回调函数是，回传入两个参数，resolve和reject，本身又是函数
+    </script>
+
+</body>
+</html>

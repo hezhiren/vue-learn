@@ -2,6 +2,7 @@
   <tab-bar>
       <!-- 不是动态绑定的话，path不需要加: -->
       <tab-bar-item path='/home' activeColor='#FF5777'>
+        <!-- 自定义文件路别名 -->
         <img slot="item-icon" src="~assets/img/tabbar/home.svg">
         <img slot="item-icon-active" src="~assets/img/tabbar/home_active.svg">
         <div slot="item-text">首页</div>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // resolve("resolve")
+          reject("reject");
+        }, 1000)
+      }).then(
+        // 传入两个参数，第一个成功调用，第二个失败调用
+        (data) => {console.log(data)},
+        (error) => {console.log(error)}
+      ) 
+    </script>
+</body>
+</html>
